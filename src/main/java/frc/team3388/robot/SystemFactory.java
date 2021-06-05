@@ -11,7 +11,6 @@ import com.flash3388.flashlib.io.devices.DoubleSolenoid;
 import com.flash3388.flashlib.io.devices.SpeedController;
 import com.revrobotics.ColorSensorV3;
 import edu.wpi.first.wpilibj.I2C;
-import frc.team3388.robot.subsystems.ExampleSystem;
 import frc.team3388.robot.subsystems.ShooterSystem;
 import frc.team3388.robot.subsystems.IntakeSystem;
 import frc.team3388.robot.subsystems.DriveSystem;
@@ -24,15 +23,6 @@ public class SystemFactory {
     public SystemFactory(FrcRobotControl robotControl) {
         this.robotControl = robotControl;
     }
-
-    public ExampleSystem createExampleSystem() {
-        SpeedController motor = new SpeedControllers()
-                .add(new WPI_TalonSRX(RobotMap.EXAMPLE_SYSTEM_MOTOR))
-                .build();
-
-        return new ExampleSystem(motor);
-    }
-
 
     public ShooterSystem createShooterSystem() {
         SpeedController controller = new SpeedControllers()
