@@ -1,0 +1,11 @@
+language: java
+
+install:
+  - "./gradlew clean"
+  - "./gradlew assemble"
+
+jdk:
+  - openjdk11
+
+script:
+  - "./gradlew check"
