@@ -56,12 +56,12 @@ public class SystemFactory {
 
     public DriveSystem createDriveSystem() {
         SpeedController right = new SpeedControllers()
-                .add(new WPI_TalonSRX(RobotMap.RIGHT1))
-                .add(new WPI_TalonSRX(RobotMap.RIGHT2))
+                .add(new WPI_TalonSRX(RobotMap.DRIVE_RIGHT1))
+                .add(new WPI_TalonSRX(RobotMap.DRIVE_RIGHT2))
                 .build();
         SpeedController left = new SpeedControllers()
-                .add(new WPI_TalonSRX(RobotMap.LEFT1))
-                .add(new WPI_TalonSRX(RobotMap.LEFT2))
+                .add(new WPI_TalonSRX(RobotMap.DRIVE_LEFT1))
+                .add(new WPI_TalonSRX(RobotMap.DRIVE_LEFT2))
                 .build();
 
         return new DriveSystem(right, left);
