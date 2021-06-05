@@ -8,12 +8,14 @@ import frc.team3388.robot.subsystems.DriveSystem;
 import frc.team3388.robot.subsystems.ExampleSystem;
 import frc.team3388.robot.subsystems.HopperSystem;
 import frc.team3388.robot.subsystems.IntakeSystem;
+import frc.team3388.robot.subsystems.ShooterSystem;
 
 public class Robot extends DelegatingRobotControl implements IterativeFrcRobot {
 
     private final ExampleSystem exampleSystem;
     private final IntakeSystem intakeSystem;
     private final HopperSystem hopperSystem;
+    private final ShooterSystem shooterSystem;
     private final DriveSystem driveSystem;
 
     private final XboxController xbox;
@@ -25,6 +27,7 @@ public class Robot extends DelegatingRobotControl implements IterativeFrcRobot {
         SystemFactory systemFactory = new SystemFactory(robotControl);
         exampleSystem = systemFactory.createExampleSystem();
         hopperSystem = systemFactory.createHopperSystem();
+        shooterSystem=systemFactory.createShooterSystem();
         driveSystem = systemFactory.createDriveSystem();
 
         intakeSystem = systemFactory.createIntakeSystem();
