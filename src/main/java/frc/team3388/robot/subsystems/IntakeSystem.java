@@ -12,7 +12,6 @@ public class IntakeSystem extends Subsystem {
 
     private DoubleSolenoid pistons;
 
-    private final double speed = 0.6;
 
 
     public IntakeSystem(SpeedController motor, DoubleSolenoid pistons) {
@@ -20,7 +19,7 @@ public class IntakeSystem extends Subsystem {
         this.pistons = pistons;
     }
 
-    public void collect() {
+    public void collect(double speed) {
         motor.set(speed);
     }
 
