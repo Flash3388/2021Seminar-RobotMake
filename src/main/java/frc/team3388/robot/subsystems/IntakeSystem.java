@@ -10,15 +10,15 @@ public class IntakeSystem extends Subsystem {
 
     private DoubleSolenoid pistons;
 
-
+    private static final double SPEED = 0.6;
 
     public IntakeSystem(SpeedController motor, DoubleSolenoid pistons) {
         this.motor = motor;
         this.pistons = pistons;
     }
 
-    public void collect(double speed) {
-        motor.set(speed);
+    public void collect() {
+        motor.set(SPEED);
     }
 
     public void openPistons() {

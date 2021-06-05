@@ -18,7 +18,7 @@ public class CollectBalls extends ActionBase {
 
     @Override
     public void execute() {
-        intakeSystem.collect(speed);
+        intakeSystem.collect();
     }
 
     @Override
