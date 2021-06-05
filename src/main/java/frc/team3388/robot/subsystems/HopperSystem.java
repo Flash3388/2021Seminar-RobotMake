@@ -7,7 +7,7 @@ import com.revrobotics.ColorSensorV3;
 public class HopperSystem extends Subsystem {
     private final SpeedController motor;
     private final ColorSensorV3 proximitySensor;
-    private final double SPEED = 0.95;
+    private static final double SPEED = 0.95;
 
     public HopperSystem(SpeedController motor, ColorSensorV3 proximitySensor) {
         this.motor = motor;
