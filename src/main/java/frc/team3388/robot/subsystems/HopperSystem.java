@@ -15,13 +15,15 @@ public class HopperSystem extends Subsystem {
         speed = 0.95;
     }
 
-    public void move()
-    {
+    public void move() {
         motor.set(speed);
     }
 
-    public double getProximity()
-    {
+    public double getProximity() {
         return proximitySensor.getProximity();
+    }
+
+    public void stop() {
+        motor.stop();
     }
 }

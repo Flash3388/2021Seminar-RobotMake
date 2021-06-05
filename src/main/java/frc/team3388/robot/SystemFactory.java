@@ -25,7 +25,7 @@ public class SystemFactory {
         return new ExampleSystem(motor);
     }
 
-    public HopperSystem createHopperSystem(){
+    public HopperSystem createHopperSystem() {
         SpeedController motor = new SpeedControllers()
                 .add(new WPI_TalonSRX(RobotMap.HOPPER_MOTOR))
                 .build();
