@@ -3,11 +3,18 @@ package frc.team3388.robot;
 import com.flash3388.flashlib.frc.robot.FrcRobotControl;
 import com.flash3388.flashlib.frc.robot.base.iterative.IterativeFrcRobot;
 import com.flash3388.flashlib.robot.base.DelegatingRobotControl;
+import frc.team3388.robot.subsystems.ExampleSystem;
 
 public class Robot extends DelegatingRobotControl implements IterativeFrcRobot {
 
+    private final ExampleSystem exampleSystem;
+
     public Robot(FrcRobotControl robotControl) {
         super(robotControl);
+
+        SystemFactory systemFactory = new SystemFactory(robotControl);
+
+        exampleSystem = systemFactory.createExampleSystem();
     }
 
     @Override
