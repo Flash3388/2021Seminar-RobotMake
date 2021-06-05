@@ -37,6 +37,8 @@ public class SystemsFactory {
 
 ## Robot Systems
 
+![robot](robot.png)
+
 ### Drive System
 
 - Tank Drive
