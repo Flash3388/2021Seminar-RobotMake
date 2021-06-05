@@ -30,9 +30,7 @@ public class SystemFactory {
                 .add(new WPI_TalonSRX(RobotMap.HOPPER_MOTOR))
                 .build();
 
-        WPI_TalonSRX proximityTalon = new WPI_TalonSRX(RobotMap.HOPPER_PROXIMITY_TALON);
-
-        ColorSensorV3 proximitySensor = new ColorSensorV3(proximityTalon);
+        ColorSensorV3 proximitySensor = new ColorSensorV3(I2C.Port.kOnboard);
 
         return new HopperSystem(motor, proximitySensor);
     }
