@@ -17,4 +17,9 @@ public class UnfoldIntake extends ActionBase {
     public void execute() {
         intakeSystem.openPistons();
     }
+
+    @Override
+    public boolean isFinished() {
+        return true;
+    }
 }

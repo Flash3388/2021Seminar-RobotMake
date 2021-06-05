@@ -18,5 +18,8 @@ public class FoldIntake extends ActionBase {
         intakeSystem.closePistons();
     }
 
-
+    @Override
+    public boolean isFinished() {
+        return true;
+    }
 }
