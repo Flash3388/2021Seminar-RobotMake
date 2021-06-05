@@ -13,9 +13,7 @@ public class DriveSystem extends Subsystem {
         this.tankLeft = left;
     }
 
-    public void TankDrive(double speed) {TankDrive(speed, speed);}
-
-    public void TankDrive(double right, double left) {
+    public void move(double right, double left) {
         tankRight.set(right);
         tankLeft.set(left);
     }

@@ -27,7 +27,7 @@ public class DriveAction extends ActionBase {
     public void execute() {
         double right = xbox.getAxis(XboxAxis.RightStickY).getAsDouble();
         double left = xbox.getAxis(XboxAxis.LeftStickY).getAsDouble();
-        driveSystem.TankDrive(right, left);
+        driveSystem.move(right, left);
     }
 
     @Override
