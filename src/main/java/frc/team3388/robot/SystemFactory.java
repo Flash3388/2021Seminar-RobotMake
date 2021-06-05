@@ -14,7 +14,7 @@ import edu.wpi.first.wpilibj.I2C;
 import frc.team3388.robot.subsystems.ExampleSystem;
 import frc.team3388.robot.subsystems.ShooterSystem;
 import frc.team3388.robot.subsystems.IntakeSystem;
-
+import frc.team3388.robot.subsystems.DriveSystem;
 import frc.team3388.robot.subsystems.HopperSystem;
 
 public class SystemFactory {
@@ -63,5 +63,18 @@ public class SystemFactory {
 
         return new IntakeSystem(motor, pistons);
 
+    }
+
+    public DriveSystem createDriveSystem() {
+        SpeedController right = new SpeedControllers()
+                .add(new WPI_TalonSRX(RobotMap.DRIVE_RIGHT1))
+                .add(new WPI_TalonSRX(RobotMap.DRIVE_RIGHT2))
+                .build();
+        SpeedController left = new SpeedControllers()
+                .add(new WPI_TalonSRX(RobotMap.DRIVE_LEFT1))
+                .add(new WPI_TalonSRX(RobotMap.DRIVE_LEFT2))
+                .build();
+
+        return new DriveSystem(right, left);
     }
 }
