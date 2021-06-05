@@ -9,6 +9,8 @@ public class FoldIntake extends ActionBase {
 
     public FoldIntake(IntakeSystem intakeSystem) {
         this.intakeSystem = intakeSystem;
+
+        requires(intakeSystem);
     }
 
     @Override
