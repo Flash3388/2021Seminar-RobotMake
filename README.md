@@ -139,3 +139,70 @@ public class SystemsFactory {
   - Convert shooting distance -> rotation speed (RPM)
   - Apache commons `PolynomialFunctionLagrangeForm`
   - Data Points [here](https://github.com/Flash3388/Flash2020/blob/master/src/main/java/frc/team3388/subsystems/ShooterSystem.java)
+
+## Using Components
+
+### SRX/FX Encoder
+
+The Talon SRX (and Talon FX) has a special connection for sensors and can be queried for information about it. One such device is a specialized encoder made specifically for the Talon SRX.
+
+There are two uses for those encoder in this robot, all of which are normal encoder usages:
+- to measure velocity of motor rotation
+- to measure distance traveled by the robot
+
+There are a couple of interesting constant needed:
+- PPR (Pulses Per Revolution) - indicates the precision of the sensor.
+  - For Talon SRX -> PPR = 4096.0
+  - For Talon FX -> PPR = 2048.0
+
+#### For Measuring Velocity
+
+```java
+WPI_TalonSRX talon = ...
+
+// * 600 -> to per minute
+double velocityRpm = talon.getSelectedSensorVelocity() * 600.0 / PPR;
+```
+
+#### For Measuring Distance Passed
+
+```java
+
+WPI_TalonSRX talon = ...
+
+// get distance
+double distanceMeters = talon.getSelectedSensorPosition() / PPR * WHEEL_DIAMETER_METERS * Math.PI;
+
+// the position is accumulative. so we can reset it
+talon.setSelectedSensorPosition(0);
+```
+
+### Pigeon IMU
+
+A sensor board integrating multiple devices. It has a class for usage, so it's quite simple. In this robot there is a usage of a single axis of gyroscope to track the robot orientation.
+
+The device is connected via a Talon SRX device.
+
+```java
+WPI_TalonSRX talon = ...;
+PigeonIMU pigeon = new PigeonIMU(talon);
+
+double angle = pigeon.getFusedHeading();
+
+// angle is accumulative, so we can reset it
+pigeon.setFusedHeading(0);
+```
+
+### Color Sensor
+
+The color sensor is a simple device capable of detecting colors. However, it is also capable of detecting distance to objects. Which is what the robot needs it for.
+
+It is connected via a special connection on the RoboRIO called I2C.
+
+```java
+ColorSensorV3 sensor = new ColorSensorV3(I2C.Port.kOnboard);
+
+// higher value = closer
+double proximity = sensor.getProximity();
+```
+
