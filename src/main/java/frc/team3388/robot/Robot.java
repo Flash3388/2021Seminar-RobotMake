@@ -4,13 +4,11 @@ import com.flash3388.flashlib.frc.robot.FrcRobotControl;
 import com.flash3388.flashlib.frc.robot.base.iterative.IterativeFrcRobot;
 import com.flash3388.flashlib.hid.XboxController;
 import com.flash3388.flashlib.robot.base.DelegatingRobotControl;
-import frc.team3388.robot.subsystems.ExampleSystem;
 import frc.team3388.robot.subsystems.HopperSystem;
 import frc.team3388.robot.subsystems.IntakeSystem;
 
 public class Robot extends DelegatingRobotControl implements IterativeFrcRobot {
 
-    private final ExampleSystem exampleSystem;
     private final IntakeSystem intakeSystem;
     private final HopperSystem hopperSystem;
 
@@ -21,7 +19,6 @@ public class Robot extends DelegatingRobotControl implements IterativeFrcRobot {
 
         // CREATE SUBSYSTEMS
         SystemFactory systemFactory = new SystemFactory(robotControl);
-        exampleSystem = systemFactory.createExampleSystem();
         hopperSystem = systemFactory.createHopperSystem();
 
         intakeSystem = systemFactory.createIntakeSystem();
