@@ -2,4 +2,4 @@
 - Intake: Guy
 - Hopper: Oren
 - Shooter: Maayan
-- Neta: Feeder 
+- Feeder: Neta 
