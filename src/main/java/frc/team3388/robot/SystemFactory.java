@@ -1,10 +1,12 @@
 package frc.team3388.robot;
 
+import com.ctre.phoenix.motorcontrol.can.WPI_TalonFX;
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 import com.flash3388.flashlib.frc.robot.FrcRobotControl;
 import com.flash3388.flashlib.frc.robot.io.devices.SpeedControllers;
 import com.flash3388.flashlib.io.devices.SpeedController;
 import frc.team3388.robot.subsystems.ExampleSystem;
+import frc.team3388.robot.subsystems.ShooterSystem;
 
 public class SystemFactory {
 
@@ -20,5 +22,14 @@ public class SystemFactory {
                 .build();
 
         return new ExampleSystem(motor);
+    }
+
+
+    public ShooterSystem shooterS() {
+        SpeedController controller = new SpeedControllers()
+                .add(new WPI_TalonFX(RobotMap.SHOOTER_SYSTEM_MOTOR))
+                .build();
+
+        return new ShooterSystem(controller);
     }
 }
