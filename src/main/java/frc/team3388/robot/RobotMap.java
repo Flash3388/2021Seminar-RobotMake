@@ -11,5 +11,4 @@ public class RobotMap {
     // HID
     public static final HidChannel XBOX = RoboRio.newHidChannel(0);
     public static final int HOPPER_MOTOR = 6;
-    public static final int HOPPER_PROXIMITY_TALON = 7;
 }
