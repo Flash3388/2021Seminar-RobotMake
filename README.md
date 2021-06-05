@@ -35,7 +35,6 @@ public class SystemsFactory {
 }
 ```
 
-
 ## Robot Systems
 
 ### Drive System
@@ -45,6 +44,9 @@ public class SystemsFactory {
   - 2x Talon SRX
 - Left
   - 2x Talon SRX
+
+- Actions to write:
+  - operate the drive system using an XBOX controller
 
 #### Advanced
 
@@ -64,8 +66,13 @@ public class SystemsFactory {
 
 ### Feeder System
 
+This system is responsible for feeding the shooter with balls from the Hopper system.
+
 - 1x Victor SPX (`WPI_VictorSPX`) 
   - Constant Speed: 0.35
+
+- Actions to write
+  - rotate the motor (feeds the shooter)
 
 ### Climb System
 
@@ -76,17 +83,32 @@ public class SystemsFactory {
     - Switch (`DigitalInput`)
     - `false` = robot is at top. `true` = robot not at top
 
+- Actions to write
+  - rotate the motor until the robot has risen (indicated by the switch)
+
 ### Intake System
+
+Responsible for collecting balls from the field into the hopper for storage.
 
 - 1x Victor SPX (`WPI_VictorSPX`)
   - Constant Speed: 0.6
 - 1x Piston (`DoubleSolenoid`)
   - open = unfolded, close = folded
 
+- Actions to write
+  - rotate the motor (to collect balls)
+  - unfold system
+  - fold system
+
 ### Turret System
+
+Responsible for rotating the shooter, so it can shoot towards different directions.
 
 - 1x Talon SRX
   - Speed limit = 0.4
+
+- Actions to write
+  - rotate the motor (to direct the shooter)
 
 #### Advanced
 
@@ -107,6 +129,10 @@ public class SystemsFactory {
 
 ### Hopper System
 
+Responsible for storing balls. 
+The motor transfers balls from the intake to the storage.
+The sensor detects when a ball entered from the intake.
+
 - 1x Talon SRX
   - Constant Speed: 0.95
 - Sensors:
@@ -114,11 +140,20 @@ public class SystemsFactory {
     - Color Sensor (`ColorSensorV3`)
       - Ball entered = `getProximity() >= 160` 
 
+- Actions to write
+  - rotate the motor
+    - when the sensor indicates that a ball has entered stop the action 
+
 ### Shooter System
+
+Responsible for shooting balls.
 
 - 1x Talon FX (`WPI_TalonFX`)
   - Minimum Speed: 0.2  
   - Speed must be positive
+
+- Actions to write
+  - rotate the motor (shoot) at a specific speed.
 
 #### Advanced
 
