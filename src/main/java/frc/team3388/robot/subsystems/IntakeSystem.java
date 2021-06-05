@@ -23,11 +23,11 @@ public class IntakeSystem extends Subsystem {
         motor.set(speed);
     }
 
-    public void open() {
+    public void openPistons() {
         pistons.set(DoubleSolenoid.Value.FORWARD);
     }
 
-    public void close() {
+    public void closePistons() {
         pistons.set(DoubleSolenoid.Value.REVERSE);
     }
 
