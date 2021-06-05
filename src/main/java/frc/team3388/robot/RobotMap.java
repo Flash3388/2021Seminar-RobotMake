@@ -14,4 +14,9 @@ public class RobotMap {
     public static final int PISTON_REVERSE_CHANNEL = 2;
     public static final int PISTON_FORWARD_CHANNEL = 3;
 
+    // drive motors
+    public static final int DRIVE_RIGHT1 = 1;
+    public static final int DRIVE_RIGHT2 = 2;
+    public static final int DRIVE_LEFT1 = 3;
+    public static final int DRIVE_LEFT2 = 4;
 }
