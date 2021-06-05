@@ -1,5 +1,40 @@
 # 2021 Seminar - 2020 Robot Attempt
 
+## Conventions
+
+### RobotMap
+
+All constants related to connections of physical/electronic compoenents should be defined in `RobotMap` class:
+
+```java
+public class RobotMap {
+
+    public static final int DRIVE_LEFT_MOTOR1 = 5;
+    
+    public static final I2C.Port SOME_SENSOR_CONNECTION = I2C.Port.kOnboard;
+
+}
+```
+
+### Subsystem Creation
+
+Creating subsystem instances should be done in methods in `SystemsFactory`. Each system should have a method (called `create${SYSTEM NAME}`) which creates an instance of that system, passing all dependencies to it.
+
+```java
+public class SystemsFactory {
+    
+    ..........
+    
+    
+    public SomeSystem createSomeSystem() {
+        SpeedController controller = new SpeedControllers()
+                .add(new WPI_VictorSPX(RobotMap.MOTOR_CONNECTION))
+                .build();
+        return new SomeSystem(controller);
+    }
+}
+```
+
 
 ## Robot Systems
 
