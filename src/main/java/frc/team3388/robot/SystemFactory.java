@@ -15,6 +15,8 @@ import frc.team3388.robot.subsystems.ShooterSystem;
 import frc.team3388.robot.subsystems.IntakeSystem;
 import frc.team3388.robot.subsystems.DriveSystem;
 import frc.team3388.robot.subsystems.HopperSystem;
+import frc.team3388.robot.subsystems.FeederSystem;
+
 
 public class SystemFactory {
 
@@ -67,4 +69,14 @@ public class SystemFactory {
 
         return new DriveSystem(right, left);
     }
+
+    public FeederSystem createfeedersystem(){
+        SpeedController motor = new SpeedControllers()
+                .add(new WPI_VictorSPX(RobotMap.FEEDERSYSTEM))
+                .build();
+
+        return new FeederSystem(motor);
+    }
+
+
 }

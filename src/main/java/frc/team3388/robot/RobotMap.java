@@ -1,5 +1,6 @@
 package frc.team3388.robot;
 
+import com.ctre.phoenix.motorcontrol.can.WPI_VictorSPX;
 import com.flash3388.flashlib.frc.robot.RoboRio;
 import com.flash3388.flashlib.hid.HidChannel;
 
@@ -14,6 +15,7 @@ public class RobotMap {
     public static final int INTAKE_SYSTEM_MOTOR = 1;
     public static final int PISTON_REVERSE_CHANNEL = 2;
     public static final int PISTON_FORWARD_CHANNEL = 3;
+    public static final int FEEDERSYSTEM =  1;
 
 
     // drive motors
