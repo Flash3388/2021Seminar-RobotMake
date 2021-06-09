@@ -56,7 +56,7 @@ dependencies {
     implementation (group: 'com.flash3388.flashlib', name: 'flashlib.frc.nt', version: '2021.1.0-alpha.2-SNAPSHOT') {
         exclude group: 'com.flash3388.flashlib', module: 'flashlib.core.robot'
     }
-    implementation group: 'com.flash3388.flashlib', name: 'flash3388.core.robot', version: '3.0.0-alpha.3-SNAPSHOT'
+    implementation group: 'com.flash3388.flashlib', name: 'flashlib.core.robot', version: '3.0.0-alpha.3-SNAPSHOT'
 
 
     implementation wpi.deps.wpilib()
