@@ -41,13 +41,21 @@ repositories {
     maven {
         url('https://frcmaven.wpi.edu/artifactory/release')
     }
+    maven {
+        url('https://oss.sonatype.org/content/repositories/snapshots')
+    }
 }
 
 // Defining my dependencies. In this case, WPILib (+ friends), and vendor libraries.
 // Also defines JUnit 4.
 dependencies {
-    implementation group: 'com.flash3388.flashlib', name: 'flashlib.frc.robot', version: '2021.1.0-alpha.1'
-    implementation group: 'com.flash3388.flashlib', name: 'flashlib.frc.nt', version: '2021.1.0-alpha.1'
+    implementation (group: 'com.flash3388.flashlib', name: 'flashlib.frc.robot', version: '2021.1.0-alpha.2-SNAPSHOT') {
+        exclude group: 'com.flash3388.flashlib', module: 'flashlib.core.robot'
+    }
+    implementation (group: 'com.flash3388.flashlib', name: 'flashlib.frc.nt', version: '2021.1.0-alpha.2-SNAPSHOT') {
+        exclude group: 'com.flash3388.flashlib', module: 'flashlib.core.robot'
+    }
+    implementation group: 'com.flash3388.flashlib', name: 'flash3388.core.robot', version: '3.0.0-alpha.3-SNAPSHOT'
 
     implementation wpi.deps.wpilib()
     nativeZip wpi.deps.wpilibJni(wpi.platforms.roborio)
