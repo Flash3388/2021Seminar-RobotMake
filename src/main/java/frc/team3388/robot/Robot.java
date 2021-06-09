@@ -8,7 +8,6 @@ import frc.team3388.robot.subsystems.DriveSystem;
 import frc.team3388.robot.subsystems.HopperSystem;
 import frc.team3388.robot.subsystems.IntakeSystem;
 import frc.team3388.robot.subsystems.ShooterSystem;
-import frc.team3388.robot.subsystems.ExampleSystem;
 import frc.team3388.robot.subsystems.FeederSystem;
 
 public class Robot extends DelegatingRobotControl implements IterativeFrcRobot {
