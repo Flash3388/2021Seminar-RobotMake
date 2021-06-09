@@ -6,6 +6,7 @@ import com.flash3388.flashlib.scheduling.actions.Actions;
 import edu.wpi.first.wpilibj.shuffleboard.BuiltInWidgets;
 import edu.wpi.first.wpilibj.shuffleboard.Shuffleboard;
 import frc.team3388.robot.subsystems.DriveSystem;
+import frc.team3388.robot.subsystems.HopperSystem;
 import frc.team3388.robot.subsystems.ShooterSystem;
 import frc.team3388.robot.subsystems.TurretSystem;
 
@@ -47,5 +48,11 @@ public class Dashboard {
         Shuffleboard.getTab("Sensors")
                 .addNumber("Shooter Speed", shooterSystem::getSpeedRpm)
                 .withWidget(BuiltInWidgets.kTextView);
+    }
+
+    public static void showHopper(HopperSystem hopperSystem) {
+        Shuffleboard.getTab("Sensors")
+            .addBoolean("Hopper Detected Ball", hopperSystem::isBallDetected)
+            .withWidget(BuiltInWidgets.kBooleanBox);
     }
 }

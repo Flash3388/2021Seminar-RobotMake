@@ -22,6 +22,10 @@ public class HopperSystem extends Subsystem {
         return proximitySensor.getProximity();
     }
 
+    public boolean isBallDetected() {
+        return getProximity() >= 160;
+    }
+
     public void stop() {
         motor.stop();
     }
