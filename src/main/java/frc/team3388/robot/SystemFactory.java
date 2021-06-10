@@ -70,14 +70,14 @@ public class SystemFactory {
     public DriveSystem createDriveSystem() {
         WPI_TalonSRX rightFront = new WPI_TalonSRX(RobotMap.DRIVE_RIGHT1);
         WPI_TalonSRX leftFront = new WPI_TalonSRX(RobotMap.DRIVE_LEFT1);
-        leftFront.setInverted(true);
+
         WPI_TalonSRX leftBack = new WPI_TalonSRX(RobotMap.DRIVE_LEFT2);
-        leftBack.setInverted(true);
 
         SpeedController right = new SpeedControllers()
                 .add(rightFront)
                 .add(new WPI_TalonSRX(RobotMap.DRIVE_RIGHT2))
                 .build();
+        right.inverted(true);
         SpeedController left = new SpeedControllers()
                 .add(leftFront)
                 .add(leftBack)

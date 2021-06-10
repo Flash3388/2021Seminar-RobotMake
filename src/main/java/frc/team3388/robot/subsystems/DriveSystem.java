@@ -49,6 +49,11 @@ public class DriveSystem extends Subsystem {
         mPigeon.setFusedHeading(0);
     }
 
+    public void resetEncoders() {
+        encoderRight.resetDistance();
+        encoderLeft.resetDistance();
+    }
+
     public void move(double right, double left) {
         tankRight.set(right);
         tankLeft.set(left);

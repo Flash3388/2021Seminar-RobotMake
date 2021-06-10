@@ -4,7 +4,9 @@ import com.flash3388.flashlib.frc.robot.FrcRobotControl;
 import com.flash3388.flashlib.frc.robot.base.iterative.IterativeFrcRobot;
 import com.flash3388.flashlib.hid.XboxController;
 import com.flash3388.flashlib.robot.base.DelegatingRobotControl;
+import edu.wpi.first.wpilibj.Compressor;
 import frc.team3388.robot.actions.DriveAction;
+import frc.team3388.robot.actions.MoveForward;
 import frc.team3388.robot.subsystems.DriveSystem;
 import frc.team3388.robot.subsystems.FeederSystem;
 import frc.team3388.robot.subsystems.HopperSystem;
@@ -25,6 +27,8 @@ public class Robot extends DelegatingRobotControl implements IterativeFrcRobot {
 
     public Robot(FrcRobotControl robotControl) {
         super(robotControl);
+
+        new Compressor().stop();
 
         // CREATE SUBSYSTEMS
         SystemFactory systemFactory = new SystemFactory(robotControl);
@@ -70,7 +74,7 @@ public class Robot extends DelegatingRobotControl implements IterativeFrcRobot {
 
     @Override
     public void autonomousInit() {
-
+        new MoveForward(driveSystem, 1.5).start();
     }
 
     @Override
