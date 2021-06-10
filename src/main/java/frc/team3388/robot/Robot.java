@@ -2,8 +2,11 @@ package frc.team3388.robot;
 
 import com.flash3388.flashlib.frc.robot.FrcRobotControl;
 import com.flash3388.flashlib.frc.robot.base.iterative.IterativeFrcRobot;
+import com.flash3388.flashlib.hid.XboxButton;
 import com.flash3388.flashlib.hid.XboxController;
 import com.flash3388.flashlib.robot.base.DelegatingRobotControl;
+import frc.team3388.robot.actions.MoveTurretLeft;
+import frc.team3388.robot.actions.MoveTurretRight;
 import frc.team3388.robot.subsystems.*;
 
 public class Robot extends DelegatingRobotControl implements IterativeFrcRobot {
@@ -35,6 +38,8 @@ public class Robot extends DelegatingRobotControl implements IterativeFrcRobot {
         // CONFIGURE ACTIONS
 
         feederSystem = systemFactory.createfeedersystem();
+        xbox.getButton(XboxButton.RB).whileActive(new MoveTurretRight(turretSystem));
+        xbox.getButton(XboxButton.LB).whileActive(new MoveTurretLeft(turretSystem));
     }
 
     @Override
