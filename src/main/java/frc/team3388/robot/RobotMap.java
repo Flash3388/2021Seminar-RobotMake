@@ -23,4 +23,8 @@ public class RobotMap {
     public static final int DRIVE_RIGHT2 = 2;
     public static final int DRIVE_LEFT1 = 3;
     public static final int DRIVE_LEFT2 = 4;
+
+
+    // turret motor
+    public static final int TURRET_MOTOR = 3;
 }
