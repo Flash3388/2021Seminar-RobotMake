@@ -243,3 +243,10 @@ ColorSensorV3 sensor = new ColorSensorV3(I2C.Port.kOnboard);
 double proximity = sensor.getProximity();
 ```
 
+### Climb Sensor
+
+```java
+DigitalInput sensor = new DigitalInput(RobotMap.CLIMB_THINGY);
+
+boolean detected = !sensor.get();
+```

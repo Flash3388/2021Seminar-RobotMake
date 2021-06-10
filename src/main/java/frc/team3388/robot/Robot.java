@@ -2,12 +2,8 @@ package frc.team3388.robot;
 
 import com.flash3388.flashlib.frc.robot.FrcRobotControl;
 import com.flash3388.flashlib.frc.robot.base.iterative.IterativeFrcRobot;
-import com.flash3388.flashlib.hid.XboxButton;
 import com.flash3388.flashlib.hid.XboxController;
 import com.flash3388.flashlib.robot.base.DelegatingRobotControl;
-import frc.team3388.robot.actions.CollectBalls;
-import frc.team3388.robot.actions.FoldIntake;
-import frc.team3388.robot.actions.UnfoldIntake;
 import frc.team3388.robot.subsystems.ExampleSystem;
 import frc.team3388.robot.subsystems.IntakeSystem;
 
@@ -27,11 +23,8 @@ public class Robot extends DelegatingRobotControl implements IterativeFrcRobot {
         intakeSystem = systemFactory.createIntakeSystem();
         // CREATE CONTROLLERS
         xbox = getHidInterface().newXboxController(RobotMap.XBOX);
-        // CONFIGURE ACTIONS
-        xbox.getDpad().up().whenActive(new UnfoldIntake(intakeSystem));
-        xbox.getDpad().down().whenActive(new FoldIntake(intakeSystem));
 
-        xbox.getButton(XboxButton.LB).whileActive(new CollectBalls(intakeSystem));
+        // CONFIGURE ACTIONS
     }
 
     @Override
