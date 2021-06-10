@@ -30,6 +30,7 @@ public class SystemFactory {
         SpeedController controller = new SpeedControllers()
                 .add(new WPI_TalonFX(RobotMap.SHOOTER_SYSTEM_MOTOR))
                 .build();
+        controller.setInverted(true);
 
         return new ShooterSystem(controller);
     }

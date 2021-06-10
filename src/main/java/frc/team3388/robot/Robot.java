@@ -2,8 +2,11 @@ package frc.team3388.robot;
 
 import com.flash3388.flashlib.frc.robot.FrcRobotControl;
 import com.flash3388.flashlib.frc.robot.base.iterative.IterativeFrcRobot;
+import com.flash3388.flashlib.hid.XboxButton;
 import com.flash3388.flashlib.hid.XboxController;
 import com.flash3388.flashlib.robot.base.DelegatingRobotControl;
+import edu.wpi.first.wpilibj.Compressor;
+import frc.team3388.robot.actions.ShootBall;
 import frc.team3388.robot.subsystems.DriveSystem;
 import frc.team3388.robot.subsystems.HopperSystem;
 import frc.team3388.robot.subsystems.IntakeSystem;
@@ -36,7 +39,13 @@ public class Robot extends DelegatingRobotControl implements IterativeFrcRobot {
 
         // CONFIGURE ACTIONS
 
+
         feederSystem = systemFactory.createfeedersystem();
+
+        xbox.getButton(XboxButton.RB).whileActive(new ShootBall(shooterSystem,xbox, 0.5));
+
+        Compressor compressor = new Compressor();
+        compressor.stop();
     }
 
     @Override
@@ -51,7 +60,7 @@ public class Robot extends DelegatingRobotControl implements IterativeFrcRobot {
 
     @Override
     public void teleopInit() {
-
+       // new ShootBall(shooterSystem, xbox).start();
     }
 
     @Override
