@@ -7,11 +7,8 @@ public class CollectBalls extends ActionBase {
 
     private final IntakeSystem intakeSystem;
 
-    private final int speed;
-
-    public CollectBalls(IntakeSystem intakeSystem, int speed) {
+    public CollectBalls(IntakeSystem intakeSystem) {
         this.intakeSystem = intakeSystem;
-        this.speed = speed;
 
         requires(intakeSystem);
     }
