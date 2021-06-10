@@ -10,7 +10,7 @@ import frc.team3388.robot.io.MagEncoder;
 
 public class TurretSystem extends Subsystem implements Rotatable {
 
-    private static final double MAX_SPEED = 0.4;
+    private static final double MAX_SPEED = 0.25;
     private static final double MAX_ANGLE = 110;
 
     private final SpeedController controller;
