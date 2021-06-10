@@ -1,0 +1,12 @@
+- Make autonomous for few systems
+    - drive
+        - move for distance
+        - rotate to angle
+    - shooter
+        - rotate at specific speed
+    - turret
+        - rotate to angle
+    - intake + hopper
+        - rotate until ball collected
+    - feeder + shooter
+        - feed balls for shooting
