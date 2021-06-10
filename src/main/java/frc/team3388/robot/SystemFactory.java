@@ -11,11 +11,7 @@ import com.flash3388.flashlib.io.devices.DoubleSolenoid;
 import com.flash3388.flashlib.io.devices.SpeedController;
 import com.revrobotics.ColorSensorV3;
 import edu.wpi.first.wpilibj.I2C;
-import frc.team3388.robot.subsystems.ShooterSystem;
-import frc.team3388.robot.subsystems.IntakeSystem;
-import frc.team3388.robot.subsystems.DriveSystem;
-import frc.team3388.robot.subsystems.HopperSystem;
-import frc.team3388.robot.subsystems.FeederSystem;
+import frc.team3388.robot.subsystems.*;
 
 
 public class SystemFactory {
@@ -78,5 +74,11 @@ public class SystemFactory {
         return new FeederSystem(motor);
     }
 
+    public TurretSystem createTurretSystem(){
+        SpeedController turretController = new SpeedControllers()
+                .add(new WPI_TalonSRX(RobotMap.TURRET_MOTOR))
+                .build();
 
+        return new TurretSystem(turretController);
+    }
 }
