@@ -42,6 +42,15 @@ public class Dashboard {
         Shuffleboard.getTab("Sensors")
                 .addNumber("Turret Angle", turretSystem::getAngleDegrees)
                 .withWidget(BuiltInWidgets.kDial);
+
+        Action resetSensors = Actions.instant(turretSystem::resetAngle)
+                .configure()
+                    .setRunWhenDisabled(true)
+                    .setName("Reset Gyro")
+                .save();
+        Shuffleboard.getTab("Sensors")
+                .add("Reset Turret Gyro", new SendableActionWrapper(resetSensors))
+                .withWidget(BuiltInWidgets.kCommand);
     }
 
     public static void showShooter(ShooterSystem shooterSystem) {

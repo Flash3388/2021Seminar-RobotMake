@@ -1,5 +1,6 @@
 package frc.team3388.robot.actions;
 
+import com.flash3388.flashlib.Debug;
 import com.flash3388.flashlib.control.Direction;
 import com.flash3388.flashlib.scheduling.actions.ActionBase;
 import frc.team3388.robot.subsystems.TurretSystem;
@@ -32,6 +33,7 @@ public class MoveTurretToAngle extends ActionBase {
 
     @Override
     public void execute() {
+
         turretSystem.rotate(speed, direction);
     }
 
@@ -39,11 +41,11 @@ public class MoveTurretToAngle extends ActionBase {
     public boolean isFinished() {
         if(direction == Direction.FORWARD)
         {
-            return turretSystem.getAngleDegrees() <= angle;
+            return turretSystem.getAngleDegrees() >= angle;
         }
         else if(direction == Direction.BACKWARD)
         {
-            return turretSystem.getAngleDegrees() >= angle;
+            return turretSystem.getAngleDegrees() <= angle;
         }
         return true;
     }

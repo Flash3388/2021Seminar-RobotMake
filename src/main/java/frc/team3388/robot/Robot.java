@@ -2,12 +2,11 @@ package frc.team3388.robot;
 
 import com.flash3388.flashlib.frc.robot.FrcRobotControl;
 import com.flash3388.flashlib.frc.robot.base.iterative.IterativeFrcRobot;
-import com.flash3388.flashlib.hid.XboxAxis;
 import com.flash3388.flashlib.hid.XboxButton;
 import com.flash3388.flashlib.hid.XboxController;
 import com.flash3388.flashlib.robot.base.DelegatingRobotControl;
 import frc.team3388.robot.actions.DriveAction;
-import frc.team3388.robot.actions.MoveTurretToAngle;
+import frc.team3388.robot.actions.PidMoveTurretToAngle;
 import frc.team3388.robot.subsystems.DriveSystem;
 import frc.team3388.robot.subsystems.FeederSystem;
 import frc.team3388.robot.subsystems.HopperSystem;
@@ -49,7 +48,7 @@ public class Robot extends DelegatingRobotControl implements IterativeFrcRobot {
 
         // CONFIGURE ACTIONS
         driveSystem.setDefaultAction(new DriveAction(driveSystem, xbox));
-        xbox.getButton(XboxButton.A).whileActive(new MoveTurretToAngle(turretSystem, 90, 0.25));
+        xbox.getButton(XboxButton.A).whenActive(new PidMoveTurretToAngle(turretSystem, getClock(), 90, 10));
     }
 
     @Override
