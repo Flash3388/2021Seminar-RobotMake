@@ -66,6 +66,7 @@ public class SystemFactory {
                 .add(new WPI_TalonSRX(RobotMap.DRIVE_LEFT1))
                 .add(new WPI_TalonSRX(RobotMap.DRIVE_LEFT2))
                 .build();
+        left.setInverted(true);
 
         return new DriveSystem(right, left);
     }
