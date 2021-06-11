@@ -1,5 +1,6 @@
 package frc.team3388.robot.subsystems;
 
+import com.flash3388.flashlib.Debug;
 import com.flash3388.flashlib.control.Direction;
 import com.flash3388.flashlib.io.devices.SpeedController;
 import com.flash3388.flashlib.math.Mathf;

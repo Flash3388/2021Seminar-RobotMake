@@ -4,6 +4,8 @@ import com.flash3388.flashlib.frc.robot.FrcRobotControl;
 import com.flash3388.flashlib.frc.robot.base.iterative.IterativeFrcRobot;
 import com.flash3388.flashlib.hid.XboxController;
 import com.flash3388.flashlib.robot.base.DelegatingRobotControl;
+import com.flash3388.flashlib.scheduling.actions.Action;
+import frc.team3388.robot.actions.AlignWithTarget;
 import frc.team3388.robot.actions.DriveAction;
 import frc.team3388.robot.subsystems.DriveSystem;
 import frc.team3388.robot.subsystems.FeederSystem;
@@ -70,7 +72,8 @@ public class Robot extends DelegatingRobotControl implements IterativeFrcRobot {
 
     @Override
     public void autonomousInit() {
-
+        Action alignTarget = new AlignWithTarget(turretSystem);
+        alignTarget.start();
     }
 
     @Override
