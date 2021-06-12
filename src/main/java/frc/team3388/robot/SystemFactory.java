@@ -12,6 +12,7 @@ import com.flash3388.flashlib.io.devices.SpeedController;
 import com.revrobotics.ColorSensorV3;
 import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.I2C;
+import edu.wpi.first.wpilibj.PWMVictorSPX;
 import edu.wpi.first.wpilibj.Victor;
 import frc.team3388.robot.subsystems.*;
 
@@ -78,10 +79,10 @@ public class SystemFactory {
 
     public ClimbSystem creatclimbsystem(){
         SpeedController up = new SpeedControllers()
-                .add (new WPI_VictorSPX(RobotMap.UPPER))
+                .add (new PWMVictorSPX(RobotMap.UPPER))
                 .build();
         SpeedController down = new SpeedControllers()
-                .add (new WPI_VictorSPX(RobotMap.LOWER))
+                .add (new PWMVictorSPX(RobotMap.LOWER))
                 .build();
         DigitalInput sensor = new DigitalInput(RobotMap.CLIMB_SENSOR);
 

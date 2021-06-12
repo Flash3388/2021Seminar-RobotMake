@@ -19,9 +19,14 @@ public class ClimbSystem extends Subsystem {
         return sensor.get();
     }
 
-    public void climb(double speed){
+    public void climbdown(double speed){
         up.set(speed);
         down.set(speed);
+    }
+
+    public void climbup(double speed){
+        up.set(-speed);
+        down.set(-speed);
     }
 
     public void stop(){

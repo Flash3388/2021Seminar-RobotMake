@@ -3,12 +3,12 @@ package frc.team3388.robot.actions;
 import com.flash3388.flashlib.scheduling.actions.ActionBase;
 import frc.team3388.robot.subsystems.ClimbSystem;
 
-public class Climb extends ActionBase {
+public class ClimbDown extends ActionBase {
 
     private ClimbSystem climbsystem;
     private double speed;
 
-    public Climb(ClimbSystem climbsystem, double speed){
+    public ClimbDown(ClimbSystem climbsystem, double speed){
         this.climbsystem = climbsystem;
         this.speed = speed;
 
@@ -22,12 +22,13 @@ public class Climb extends ActionBase {
 
     @Override
     public void execute() {
-        climbsystem.climb(0.7);
+        climbsystem.climbdown(speed);
+
     }
 
     @Override
     public boolean isFinished() {
-        return climbsystem.maxHeight();
+        return false;
     }
 
     @Override
