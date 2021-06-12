@@ -23,4 +23,9 @@ public class RobotMap {
     public static final int DRIVE_RIGHT2 = 2;
     public static final int DRIVE_LEFT1 = 3;
     public static final int DRIVE_LEFT2 = 4;
+
+    // climb motors
+    public  static final int UPPER = 0;
+    public  static final int LOWER = 1;
+    public  static final int CLIMB_SENSOR = 0;
 }

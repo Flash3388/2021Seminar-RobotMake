@@ -10,12 +10,11 @@ import com.flash3388.flashlib.frc.robot.io.devices.SpeedControllers;
 import com.flash3388.flashlib.io.devices.DoubleSolenoid;
 import com.flash3388.flashlib.io.devices.SpeedController;
 import com.revrobotics.ColorSensorV3;
+import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.I2C;
-import frc.team3388.robot.subsystems.ShooterSystem;
-import frc.team3388.robot.subsystems.IntakeSystem;
-import frc.team3388.robot.subsystems.DriveSystem;
-import frc.team3388.robot.subsystems.HopperSystem;
-import frc.team3388.robot.subsystems.FeederSystem;
+import edu.wpi.first.wpilibj.PWMVictorSPX;
+import edu.wpi.first.wpilibj.Victor;
+import frc.team3388.robot.subsystems.*;
 
 
 public class SystemFactory {
@@ -76,6 +75,18 @@ public class SystemFactory {
                 .build();
 
         return new FeederSystem(motor);
+    }
+
+    public ClimbSystem creatclimbsystem(){
+        SpeedController up = new SpeedControllers()
+                .add (new PWMVictorSPX(RobotMap.UPPER))
+                .build();
+        SpeedController down = new SpeedControllers()
+                .add (new PWMVictorSPX(RobotMap.LOWER))
+                .build();
+        DigitalInput sensor = new DigitalInput(RobotMap.CLIMB_SENSOR);
+
+        return new ClimbSystem(up,down,sensor);
     }
 
 
