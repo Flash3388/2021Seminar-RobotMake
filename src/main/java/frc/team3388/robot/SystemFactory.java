@@ -4,18 +4,17 @@ import com.ctre.phoenix.motorcontrol.can.WPI_TalonFX;
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 import com.ctre.phoenix.motorcontrol.can.WPI_VictorSPX;
 import com.flash3388.flashlib.frc.robot.FrcRobotControl;
-import com.flash3388.flashlib.frc.robot.io.devices.FrcDoubleSolenoid;
+import edu.wpi.first.networktables.NetworkTableEntry;
+import edu.wpi.first.networktables.NetworkTableInstance;
+import edu.wpi.first.wpilibj.DoubleSolenoid;
 import com.flash3388.flashlib.frc.robot.io.devices.FrcSpeedController;
 import com.flash3388.flashlib.frc.robot.io.devices.SpeedControllers;
-import com.flash3388.flashlib.io.devices.DoubleSolenoid;
 import com.flash3388.flashlib.io.devices.SpeedController;
 import com.revrobotics.ColorSensorV3;
 import edu.wpi.first.wpilibj.I2C;
-import frc.team3388.robot.subsystems.ShooterSystem;
-import frc.team3388.robot.subsystems.IntakeSystem;
-import frc.team3388.robot.subsystems.DriveSystem;
-import frc.team3388.robot.subsystems.HopperSystem;
-import frc.team3388.robot.subsystems.FeederSystem;
+import frc.team3388.robot.objects.NetworkDoubleProperty;
+import frc.team3388.robot.objects.NetworkDoubleSupplier;
+import frc.team3388.robot.subsystems.*;
 
 
 public class SystemFactory {
@@ -34,6 +33,14 @@ public class SystemFactory {
         return new ShooterSystem(controller);
     }
 
+    public TurretSystem createTurretSystem(){
+        SpeedController controller = new SpeedControllers()
+                .add(new WPI_TalonSRX(RobotMap.TURRET_MOTOR))
+                .build();
+
+        return new TurretSystem(controller);
+
+    }
     public HopperSystem createHopperSystem() {
         SpeedController motor = new SpeedControllers()
                 .add(new WPI_TalonSRX(RobotMap.HOPPER_MOTOR))
@@ -48,10 +55,7 @@ public class SystemFactory {
         FrcSpeedController motor = new FrcSpeedController(
                 new WPI_VictorSPX(
                         RobotMap.INTAKE_SYSTEM_MOTOR));
-        DoubleSolenoid pistons = new FrcDoubleSolenoid(
-                new edu.wpi.first.wpilibj.DoubleSolenoid(
-                        RobotMap.PISTON_FORWARD_CHANNEL, RobotMap.PISTON_REVERSE_CHANNEL
-                ));
+        DoubleSolenoid pistons = new DoubleSolenoid(RobotMap.PISTON_FORWARD_CHANNEL, RobotMap.PISTON_REVERSE_CHANNEL);
 
         return new IntakeSystem(motor, pistons);
 
@@ -66,16 +70,26 @@ public class SystemFactory {
                 .add(new WPI_TalonSRX(RobotMap.DRIVE_LEFT1))
                 .add(new WPI_TalonSRX(RobotMap.DRIVE_LEFT2))
                 .build();
+        left.inverted(true);
 
         return new DriveSystem(right, left);
     }
 
-    public FeederSystem createfeedersystem(){
+    public FeederSystem createFeederSystem(){
         SpeedController motor = new SpeedControllers()
-                .add(new WPI_VictorSPX(RobotMap.FEEDERSYSTEM))
+                .add(new WPI_VictorSPX(RobotMap.FEEDER_SYSTEM))
                 .build();
 
         return new FeederSystem(motor);
+    }
+
+    public VisionSystem createVisionSystem() {
+        NetworkTableEntry exposureEntry = NetworkTableInstance.getDefault().getTable(RobotMap.CAMERA_CONTROL_TABLE_NAME).getEntry(RobotMap.EXPOSURE_ENTRY_NAME);
+        NetworkDoubleSupplier alignmentErrorSupplier = new NetworkDoubleSupplier(RobotMap.VISION_TABLE_NAME, RobotMap.ALIGNMENT_ERROR_ENTRY_NAME, 0);
+        NetworkDoubleSupplier distanceSupplier = new NetworkDoubleSupplier(RobotMap.VISION_TABLE_NAME, RobotMap.DISTANCE_ENTRY_NAME, -1);
+        NetworkDoubleProperty cameraIndexSupplier = new NetworkDoubleProperty(RobotMap.CAMERA_CONTROL_TABLE_NAME, RobotMap.CAMERA_INDEX_ENTRY_NAME, 0);
+
+        return new VisionSystem(exposureEntry, alignmentErrorSupplier, distanceSupplier, cameraIndexSupplier);
     }
 
 

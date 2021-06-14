@@ -1,6 +1,6 @@
 package frc.team3388.robot.subsystems;
 
-import com.flash3388.flashlib.io.devices.DoubleSolenoid;
+import edu.wpi.first.wpilibj.DoubleSolenoid;
 import com.flash3388.flashlib.io.devices.SpeedController;
 import com.flash3388.flashlib.scheduling.Subsystem;
 
@@ -10,7 +10,7 @@ public class IntakeSystem extends Subsystem {
 
     private DoubleSolenoid pistons;
 
-    private static final double SPEED = 0.6;
+    private static final double SPEED = -0.6;
 
     public IntakeSystem(SpeedController motor, DoubleSolenoid pistons) {
         this.motor = motor;
@@ -22,11 +22,15 @@ public class IntakeSystem extends Subsystem {
     }
 
     public void openPistons() {
-        pistons.set(DoubleSolenoid.Value.FORWARD);
+        pistons.set(DoubleSolenoid.Value.kForward);
     }
 
     public void closePistons() {
-        pistons.set(DoubleSolenoid.Value.REVERSE);
+        pistons.set(DoubleSolenoid.Value.kReverse);
+    }
+
+    public DoubleSolenoid.Value pistonStatus() {
+        return pistons.get();
     }
 
     public void stop() {
