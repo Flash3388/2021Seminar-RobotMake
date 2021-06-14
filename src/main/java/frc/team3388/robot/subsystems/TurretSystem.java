@@ -18,11 +18,11 @@ public class TurretSystem extends Subsystem {
 
     }
     public void rotateRight (){
-        food.set(-0.4);
+        food.set(-0.2);
 
     }
     public void rotateLeft () {
-        food.set(0.4);
+        food.set(0.2);
 
     }
     public void stopFood() {
